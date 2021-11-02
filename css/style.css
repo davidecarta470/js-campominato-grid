@@ -1,0 +1,42 @@
+/* HEADER */
+header{
+  height:80px;
+
+}
+img{
+  width:60px;
+}
+select {
+  padding-right: 100px;
+}
+
+/* MAIN */
+main{
+  height:80vh;
+  background-color:aquamarine;
+}
+.container{
+  width:400px;
+  height:400px;
+  border :1px solid black;
+  display:flex;
+  flex-wrap: wrap;
+  padding:0;
+}
+
+/* FOOTER */
+footer{
+  height:40px;
+}
+.made-by{
+  line-height:40px;
+  padding-left: 100px;
+}
+
+
+/* SQUARE */
+.square{
+  height: calc(100%/8);
+  width: calc(100%/8);
+  border:  1px solid black;
+}
