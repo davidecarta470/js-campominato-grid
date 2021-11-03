@@ -5,6 +5,7 @@ const main = document.getElementById('main');
 const selectValue = document.getElementById('my-select');
 const Container = document.createElement('div');
 Container.className ='container';
+const NUMBER_OF_BOMB = 16;
 // let listNumberEasy =  [];
 // let listNumberAverage =  [];
 // let listNumberCrazy =  [];
@@ -33,10 +34,15 @@ Container.className ='container';
 // }
 
 // Attivo Disattivo display
+
+
 const play= document.getElementById('play');
 play.addEventListener('click',function(){
-  let n =0;
   let listNumber = [];
+  let n =0;
+  
+  
+  
   if (selectValue.value ==='easy'){
     n = 100;
   }
@@ -47,17 +53,39 @@ play.addEventListener('click',function(){
     n =49;
   }
   //  let squareSize=  selectValue.value
-
+  let bombCell = [];
+  let arrayBombCell=[]
+  for(let i=0;i<=NUMBER_OF_BOMB; i++){
+    arrayBombCell[i]= generateUniqueRandomInt(bombCell,1, n);
+  }
+  console.log(bombCell)
+  
 
   Container.innerHTML = '';
   main.append(Container)
-
+  
 
   for (let i=0 ; i<n ; i++){
     let Square = document.createElement('div');
     Square.className ='square';
     Square.classList.add(selectValue.value)
     Square.innerHTML = generateUniqueRandomInt(listNumber, 1 , n);
+    
+    Square.addEventListener('click',function(){
+      let mineActive = false;
+      for(let i=0; i<16 ;i++ ){
+        if(bombCell[i]===parseInt(Square.textContent)){
+          mineActive=true;
+        }
+      }
+      if (mineActive===true){
+          Square.classList.add('square-choise-wrong');
+      }
+      
+      Square.classList.add('square-choise-right')
+    });  
+  
+   console.log(parseInt(Square.textContent))
     Container.append(Square);
   }
   
@@ -77,6 +105,7 @@ play.addEventListener('click',function(){
     //   crazyContainer.classList.add('active')
     // }
     
+
 
 });  
   
