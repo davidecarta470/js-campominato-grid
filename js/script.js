@@ -64,6 +64,7 @@ play.addEventListener('click',function(){
   Container.innerHTML = '';
   main.append(Container)
   
+  let punteggio = 0;
 
   for (let i=0 ; i<n ; i++){
     let Square = document.createElement('div');
@@ -71,7 +72,7 @@ play.addEventListener('click',function(){
     Square.classList.add(selectValue.value)
     Square.innerHTML = generateUniqueRandomInt(listNumber, 1 , n);
     
-    Square.addEventListener('click',function(){
+    Square.addEventListener('click',function mia(){
       let mineActive = false;
       for(let i=0; i<16 ;i++ ){
         if(bombCell[i]===parseInt(Square.textContent)){
@@ -80,12 +81,15 @@ play.addEventListener('click',function(){
       }
       if (mineActive===true){
           Square.classList.add('square-choise-wrong');
+          console.log('Hai perso');
       }
       
       Square.classList.add('square-choise-right')
+      punteggio +=1;
+      if (!mineActive) console.log(punteggio);
     });  
   
-   console.log(parseInt(Square.textContent))
+
     Container.append(Square);
   }
   
